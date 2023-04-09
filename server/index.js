@@ -9,6 +9,8 @@ import multer from "multer";
  import path from "path";
  import { fileURLToPath } from "url";
 import { error } from "console";
+import authRoutes from "./routes/auth.js"
+import userRoutes from "./routes/users.js"
 import {register} from "./controllers/auth.js"
 
 
@@ -43,6 +45,11 @@ const upload=multer({storage});
 /*Routes with files*/
 
 app.post("/auth/register",upload.single("picture"),register);
+
+/*routes*/
+app.use("/auth",authRoutes);
+
+app.use("/users",userRoutes);
 
  /*Moongose setup*/
 
